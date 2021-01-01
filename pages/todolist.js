@@ -1,5 +1,5 @@
-import Layout from "../components/TodoList/Layout";
+import TodoListLayout from "../components/TodoList/TodoListLayout";
 
 export default function counter() {
-  return <Layout />;
+  return <TodoListLayout />;
 }

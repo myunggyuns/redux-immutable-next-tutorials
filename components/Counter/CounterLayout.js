@@ -1,7 +1,7 @@
 import React from "react";
 import CounterContainer from "../../containers/CounterContainer";
 
-const Layout = () => {
+const CounterLayout = () => {
   return (
     <>
       <h1>Counter Page</h1>
@@ -10,4 +10,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default CounterLayout;

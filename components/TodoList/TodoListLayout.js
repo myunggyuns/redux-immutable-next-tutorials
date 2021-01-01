@@ -1,6 +1,6 @@
 import React from "react";
 
-const Layout = () => {
+const TodoListLayout = () => {
   return (
     <>
       <h1>TodoList Page</h1>
@@ -8,4 +8,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default TodoListLayout;

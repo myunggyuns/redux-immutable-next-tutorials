@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Link from "next/link";
 
-const Layout = () => {
+const HomeLayout = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -24,4 +24,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default HomeLayout;

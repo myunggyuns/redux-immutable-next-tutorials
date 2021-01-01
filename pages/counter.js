@@ -1,5 +1,5 @@
-import Layout from "../components/Counter/Layout";
+import CounterLayout from "../components/Counter/CounterLayout";
 
 export default function counter() {
-  return <Layout />;
+  return <CounterLayout />;
 }
