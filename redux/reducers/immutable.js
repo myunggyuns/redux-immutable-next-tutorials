@@ -10,12 +10,12 @@ export const immutable = state => {
   }
 
   return {
-    counter: counter(state.counter),
+    todoList: todoList(state.list),
   };
 };
 
-function counter(counter) {
+function todoList(counter) {
   return fromJS({
-    number: counter.number,
+    list: counter.list,
   });
 }

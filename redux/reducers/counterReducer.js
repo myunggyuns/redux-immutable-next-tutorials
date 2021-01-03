@@ -5,7 +5,7 @@ const initialNumber = fromJS({
   number: 0,
 });
 
-const conterReducer = (state = initialNumber, action) => {
+const counterReducer = (state = initialNumber, action) => {
   const number = state.get("number");
   switch (action.type) {
     case INCREMENT:
@@ -17,4 +17,4 @@ const conterReducer = (state = initialNumber, action) => {
   }
 };
 
-export default conterReducer;
+export default counterReducer;
