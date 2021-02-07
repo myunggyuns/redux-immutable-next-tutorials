@@ -1,31 +1,25 @@
 import React from "react";
-import { connect } from "react-redux";
-import { deleteList } from "../../redux/actions/todolistAction";
+import { useDispatch } from "react-redux";
+import { DEL } from "../../redux/actions/actionTypes";
 
-const TodoListViewContainer = ({ list, deleteList }) => {
-  const onClickDel = e => {
+const TodoListViewContainer = ({ list }) => {
+  const dispatch = useDispatch();
+
+  const onClickDel = (e, index) => {
     e.preventDefault();
-    deleteList(list.id);
+    dispatch({ type: DEL, index });
   };
 
   return (
     <>
-      {list.inputList && (
-        <div>
-          <span>{list.inputList}</span>
-          <span>
-            <button onClick={onClickDel}>DEL</button>
-          </span>
-        </div>
-      )}
+      <div>
+        <span>{list.inputList}</span>
+        <span>
+          <button onClick={e => onClickDel(e, list.id)}>DEL</button>
+        </span>
+      </div>
     </>
   );
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    deleteList: index => dispatch(deleteList(index)),
-  };
-}
-
-export default connect(null, mapDispatchToProps)(TodoListViewContainer);
+export default TodoListViewContainer;

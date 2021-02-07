@@ -1,20 +1,10 @@
 import { combineReducers } from "redux-immutable";
-import { HYDRATE } from "next-redux-wrapper";
-import { immutable } from "./immutable";
 import counterReducer from "./counterReducer";
 import todolistReducer from "./todolistReducer";
+import phoneNumberReducer from "./phoneNumberReducer";
 
-const combinedReducer = combineReducers({
+export const rootReducer = combineReducers({
   counterReducer,
   todolistReducer,
+  phoneNumberReducer,
 });
-
-export const rootReducer = (state, action) => {
-  switch (action.type) {
-    case HYDRATE:
-      const nextState = { ...state.toJS(), ...action.payload.toJS() };
-      return immutable(nextState);
-    default:
-      return combinedReducer(state, action);
-  }
-};

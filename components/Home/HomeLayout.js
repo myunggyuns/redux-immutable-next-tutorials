@@ -18,6 +18,9 @@ const HomeLayout = () => {
         <Link passHref href="/todolist">
           <button>TodoList Page</button>
         </Link>
+        <Link passHref href="/phonenumber">
+          <button>PhoneNumber Page</button>
+        </Link>
       </main>
       <footer className={styles.footer}>z쿳쿳z</footer>
     </div>

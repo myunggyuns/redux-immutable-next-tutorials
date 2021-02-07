@@ -1,10 +1,18 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addList } from "../../redux/actions/todolistAction";
+import React, { useState, useEffect } from "react";
 import TodoListViewContainer from "./TodoListViewContainer";
+import { useStore, useDispatch } from "react-redux";
+import { ADD, DEL } from "../../redux/actions/actionTypes";
 
-const TodoListContainer = ({ list, addList }) => {
+const TodoListContainer = () => {
   const [inputList, setInputList] = useState("");
+  const store = useStore();
+  const dispatch = useDispatch();
+  var list = store.getState().get("todolistReducer").get("list");
+
+  useEffect(() => {
+    console.log(list.toJS());
+  }, [list]);
+
   const onChange = e => {
     const {
       target: { value },
@@ -14,32 +22,29 @@ const TodoListContainer = ({ list, addList }) => {
 
   const onClick = e => {
     e.preventDefault();
-    addList(inputList);
+    dispatch({ type: ADD, inputList });
     setInputList("");
+  };
+
+  const onKeyPress = e => {
+    if (e.key === "Enter") {
+      onClick(e);
+    }
   };
 
   return (
     <>
-      <input type="text" value={inputList} onChange={onChange} />
+      <input
+        type="text"
+        value={inputList}
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+      />
       <button onClick={onClick}>Add List</button>
-      {list.map(data => (
-        <TodoListViewContainer list={data} key={data.id} />
-      ))}
+      {list &&
+        list.map(data => <TodoListViewContainer list={data} key={data.id} />)}
     </>
   );
 };
 
-function mapStateToProps(state) {
-  const mapList = state.get("todolistReducer").toJS();
-  return {
-    list: mapList.list,
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    addList: list => dispatch(addList(list)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoListContainer);
+export default TodoListContainer;

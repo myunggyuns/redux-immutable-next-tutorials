@@ -14,8 +14,8 @@ export const immutable = state => {
   };
 };
 
-function todoList(counter) {
+function todoList(todo) {
   return fromJS({
-    list: counter.list,
+    list: todo.list,
   });
 }

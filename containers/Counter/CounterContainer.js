@@ -1,5 +1,5 @@
 import React from "react";
-import { onIncrement, onDecrement } from "../redux/actions/counterAction";
+import { onIncrement, onDecrement } from "../../redux/actions/counterAction";
 import { connect } from "react-redux";
 
 const CounterContainer = ({ number, onDecrement, onIncrement }) => {

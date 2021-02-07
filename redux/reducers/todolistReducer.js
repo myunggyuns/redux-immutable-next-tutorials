@@ -1,31 +1,34 @@
 import { ADD, DEL } from "../actions/actionTypes";
-import { fromJS } from "immutable";
+import { fromJS, List } from "immutable";
 
 const initialList = fromJS({
-  list: [
-    {
-      id: 0,
-      inputList: "",
-    },
-  ],
+  id: 0,
+  list: List(),
 });
 
 const counterReducer = (state = initialList, action) => {
   const getList = state.get("list");
+
   switch (action.type) {
     case ADD:
-      return state.set(
-        "list",
-        getList.push({
-          id: getList.toJS().length,
-          inputList: action.list,
-        })
-      );
+      return state
+        .set(
+          "list",
+          getList.push({
+            id: state.get("id"),
+            inputList: action.inputList,
+          })
+        )
+        .set("id", state.get("id") + 1);
+
     case DEL:
       return state.set(
         "list",
-        getList.splice(action.index, 1, { id: action.index, inputList: "" })
+        getList.delete(
+          state.get("list").findIndex(item => item.id === action.index)
+        )
       );
+
     default:
       return state;
   }

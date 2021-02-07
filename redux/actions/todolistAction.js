@@ -1,4 +1,4 @@
 import { ADD, DEL } from "./actionTypes";
 
-export const addList = list => ({ type: ADD, list });
+export const addList = inputList => ({ type: ADD, inputList });
 export const deleteList = index => ({ type: DEL, index });
