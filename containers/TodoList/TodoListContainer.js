@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import TodoListViewContainer from "./TodoListViewContainer";
-import { useStore, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ADD, DEL } from "../../redux/actions/actionTypes";
 
 const TodoListContainer = () => {
   const [inputList, setInputList] = useState("");
-  const store = useStore();
   const dispatch = useDispatch();
-  var list = store.getState().get("todolistReducer").get("list");
 
-  useEffect(() => {
-    console.log(list.toJS());
-  }, [list]);
+  const list = useSelector(state => state.get("todolistReducer").get("list"));
 
   const onChange = e => {
     const {
