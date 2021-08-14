@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TodoListViewContainer from "./TodoListViewContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD, DEL } from "../../redux/actions/actionTypes";
+import { ADD } from "../../redux/actions/actionTypes";
 
 const TodoListContainer = () => {
   const [inputList, setInputList] = useState("");
